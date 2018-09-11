@@ -3,6 +3,7 @@ package com.chen.domain;
 import org.apache.solr.client.solrj.beans.Field;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public class Product {
     @Field
@@ -22,6 +23,12 @@ public class Product {
 
     @Field("commission")
     private Double commission;
+
+    @Field("test_mu_value")
+    private List<Double> testMuValue;
+
+    @Field("test_mup_values")
+    private List<String> testMupValues;
 
     public String getId() {
         return id;
@@ -69,5 +76,21 @@ public class Product {
 
     public void setPerPrice(Double perPrice) {
         this.perPrice = perPrice;
+    }
+
+    public List<Double> getTestMuValue() {
+        return testMuValue;
+    }
+
+    public void setTestMuValue(List<Double> testMuValue) {
+        this.testMuValue = testMuValue;
+    }
+
+    public List<String> getTestMupValues() {
+        return testMupValues;
+    }
+
+    public void setTestMupValues(List<String> testMupValues) {
+        this.testMupValues = testMupValues;
     }
 }

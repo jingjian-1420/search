@@ -45,6 +45,8 @@ public class SolrTest {
                 product.setShowType(a[RandomUtils.nextInt(3)]);
                 product.setPerPrice(new Double(i));
                 product.setCommission(new Double(100.15+RandomUtils.nextInt(6)));
+                product.setTestMuValue(Arrays.asList(i * 1.5d,i*3d));
+                product.setTestMupValues(Arrays.asList("专场"+i,"专场"+(i+1),"专题："+i,"专题"+(i+1)));
                 UpdateResponse test_core = lbHttpSolrClient.addBean("test_core1", product);
                 lbHttpSolrClient.commit("test_core1");
             }
