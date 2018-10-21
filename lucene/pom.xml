@@ -5,25 +5,24 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.chen</groupId>
-  <artifactId>solr</artifactId>
+  <artifactId>lucene</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <packaging>jar</packaging>
+
+  
   <dependencies>
+
     <dependency>
-      <groupId>com.chen</groupId>
-      <artifactId>framework-tool</artifactId>
-      <version>1.0-SNAPSHOT</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.solr</groupId>
-      <artifactId>solr-core</artifactId>
+      <groupId>org.apache.lucene</groupId>
+      <artifactId>lucene-core</artifactId>
       <version>7.5.0</version>
     </dependency>
+
     <dependency>
-      <groupId>org.apache.solr</groupId>
-      <artifactId>solr-solrj</artifactId>
+      <groupId>org.apache.lucene</groupId>
+      <artifactId>lucene-queryparser</artifactId>
       <version>7.5.0</version>
     </dependency>
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -33,6 +32,6 @@
   </dependencies>
 
   <build>
-
+    <finalName>lucene</finalName>
   </build>
 </project>
