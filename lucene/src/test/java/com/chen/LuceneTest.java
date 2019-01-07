@@ -20,6 +20,8 @@ import org.apache.lucene.store.RAMDirectory;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /**
  * Description:
