@@ -14,13 +14,13 @@
     <dependency>
       <groupId>org.apache.lucene</groupId>
       <artifactId>lucene-core</artifactId>
-      <version>7.5.0</version>
+      <version>7.4.0</version>
     </dependency>
 
     <dependency>
       <groupId>org.apache.lucene</groupId>
       <artifactId>lucene-queryparser</artifactId>
-      <version>7.5.0</version>
+      <version>7.4.0</version>
     </dependency>
 
     <dependency>
@@ -33,5 +33,16 @@
 
   <build>
     <finalName>lucene</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+          <encoding>UTF-8</encoding>
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
 </project>

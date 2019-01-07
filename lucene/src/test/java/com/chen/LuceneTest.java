@@ -14,10 +14,13 @@ import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.store.Directory;
+import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.store.RAMDirectory;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /**
  * Description:
@@ -32,9 +35,10 @@ public class LuceneTest {
         Analyzer analyzer = new StandardAnalyzer();
 
         //将索引存储在内存中：
-        Directory directory = new RAMDirectory();
+//        Directory directory = new RAMDirectory();
         //若要在磁盘上存储索引，请使用以下方法:
-        //Directory directory = FSDirectory.open("/tmp/testindex");
+
+        Directory directory = FSDirectory.open(Paths.get("d:\\tmp\\testindex"));
 
         IndexWriterConfig config = new IndexWriterConfig(analyzer);
 
@@ -54,7 +58,7 @@ public class LuceneTest {
         //解析搜索“text”的简单查询：
         QueryParser parser = new QueryParser("fieldname", analyzer);
         Query query = parser.parse("text");
-        ScoreDoc[] hits = isearcher.search(query,1000).scoreDocs;
+        ScoreDoc[] hits = isearcher.search(query,1).scoreDocs;
 
 //        assertEquals(1, hits.length);
         //迭代结果:
