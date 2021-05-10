@@ -75,7 +75,7 @@ public class LuceneTest {
 
         //搜索 含有wo 的文档
         QueryParser parser = new QueryParser("name", analyzer);
-        Query query = parser.parse("wo");
+        Query query = parser.parse("wo AND ya");
         ScoreDoc[] hits = indexSearcher.search(query,1000).scoreDocs;
 
         //迭代结果:
