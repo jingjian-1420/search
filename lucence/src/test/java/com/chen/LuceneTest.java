@@ -2,9 +2,7 @@ package com.chen;
 
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
-import org.apache.lucene.document.Document;
-import org.apache.lucene.document.Field;
-import org.apache.lucene.document.TextField;
+import org.apache.lucene.document.*;
 import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.IndexWriter;
@@ -47,10 +45,15 @@ public class LuceneTest {
         //值 词法分析-语言处理-语法分析
         IndexWriter indexWriter = new IndexWriter(director1y,indexWriterConfig);
 
-        Document doc = new Document();
-        doc.add(new Field("name","wo shi shui, ni hao ya?",TextField.TYPE_STORED));
+        for(int i = 0;i<100;i++){
+            Document doc = new Document();
+            doc.add(new Field("name","张三",TextField.TYPE_STORED));
+            doc.add(new IntPoint("score",i));
+            doc.add(new StringField("title","开始考了"+i+"分数", Field.Store.YES));
+            indexWriter.addDocument(doc);
+        }
 
-        indexWriter.addDocument(doc);
+
 
         indexWriter.close();
         director1y.close();
@@ -73,10 +76,14 @@ public class LuceneTest {
         //标准分词器
         Analyzer analyzer = new StandardAnalyzer();
 
-        //搜索 含有wo 的文档
-        QueryParser parser = new QueryParser("name", analyzer);
-        Query query = parser.parse("wo AND ya");
+        QueryParser queryParser = new QueryParser("name",analyzer);
+        Query query = queryParser.parse("score:[0 TO 1000]");
+
         ScoreDoc[] hits = indexSearcher.search(query,1000).scoreDocs;
+
+
+//        ScoreDoc[] hits = indexSearcher.search(IntPoint.newRangeQuery("score",0,1000),1000).scoreDocs;
+
 
         //迭代结果:
         for (int i = 0; i < hits.length; i++) {
